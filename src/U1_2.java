@@ -4,7 +4,7 @@ class Patient {
     private int id;
     private String surname;
     private  String name;
-    private  String otchestvo;
+    private  String dadName;
     private  String address;
     private   int phone;
     private  int number_card;
@@ -12,12 +12,11 @@ class Patient {
     public Patient(){
 
     }
-    public Patient( int id,String surname, String name, String otchestvo,
-                    String address, int phone, int number_card, String diagnosis){
+    public Patient( int id,String surname, String name, String dadName, String address, int phone, int number_card, String diagnosis){
         this.id = id;
         this.surname = surname;
         this.name = name;
-        this.otchestvo = otchestvo;
+        this.dadName = dadName;
         this.address = address;
         this.phone = phone;
         this.number_card = number_card;
@@ -28,6 +27,10 @@ class Patient {
         Scanner sc = new Scanner(System.in);
         if (sc.hasNextInt()) {
             id = sc.nextInt();
+        }
+        else{
+            System.out.println("Вы ввели не int");
+            return;
         }
         System.out.println("введите фамилию ");
         sc = new Scanner(System.in);
@@ -42,7 +45,7 @@ class Patient {
         System.out.println("введите отчество ");
         sc = new Scanner(System.in);
         if (sc.hasNextLine()) {
-            otchestvo = sc.nextLine();
+            dadName = sc.nextLine();
         }
         System.out.println("введите адрес ");
         sc = new Scanner(System.in);
@@ -54,10 +57,18 @@ class Patient {
         if (sc.hasNextInt()) {
             phone = sc.nextInt();
         }
+        else{
+            System.out.println("Вы ввели не int");
+            return;
+        }
         System.out.println("введите номер медецинской карты ");
         sc = new Scanner(System.in);
         if (sc.hasNextInt()) {
             number_card = sc.nextInt();
+        }
+        else{
+            System.out.println("Вы ввели не int");
+            return;
         }
         System.out.println("введите диагноз ");
         sc = new Scanner(System.in);
@@ -66,7 +77,7 @@ class Patient {
         }
     }
     public void show() {
-        System.out.println("id = " + id + ", surname = " + surname + ", name = " + name + ", otchestvo = " + otchestvo + ", address = " + address +
+        System.out.println("id = " + id + ", surname = " + surname + ", name = " + name + ", dadName = " + dadName + ", address = " + address +
                 ", phone =" + phone + ", number_card = " + number_card + ", diagnosis = " + diagnosis);
     }
     public static Patient[] createMas(int n) {
@@ -101,7 +112,17 @@ class Patient {
         int a = 0, b = 0;
         if(sc.hasNextInt()) {
             a = sc.nextInt();
+        }
+        else{
+            System.out.println("Вы ввели не int");
+            return;
+        }
+        if (sc.hasNextInt()){
             b = sc.nextInt();
+        }
+        else{
+            System.out.println("Вы ввели не int");
+            return;
         }
         for(int i = 0; i < mas.length; i++){
             if(a <= mas[i].number_card && mas[i].number_card <= b && a < b){
